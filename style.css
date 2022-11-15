@@ -1,0 +1,10 @@
+/* CSS for questions */
+var q = document.getElementById("p");
+
+q.style.fontSize = "40px";
+q.style.textAlign = "center";
+q.innerHTML = "You got " + points + " out of " + total +
+  "<br />" +
+  "you used " + (29 - Math.floor(total_seconds)) + " seconds";
+
+return false;
