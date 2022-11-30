@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
    
-    <title>Document</title>
+    <title>Coding Quiz</title>
 </head>
 
 <body>
     <div id="quiz-time-left">
         <button id="startA"> start </button>
+    </div>
+    <div>
+        <h5 id="timeEl">
+
+        </h5>
+
+        <h4 id="Score"></h4>
     </div>
     <form name="form" id="questions" onsubmit="return score()">
         <h3 id = "questions"></h3>
@@ -20,9 +28,9 @@
         <button type="button" id = "btnC"></button>
         <button type="button" id = "btnD"></button>
 
-        <input type="submit" id="sendA" value="Submit">
+        <input type="submit" id="sendA" value="Restart">
         <br>
-
+<p id="responseMessage"></p>
     </form>
     <script src="script.js"></script>
 </body>
