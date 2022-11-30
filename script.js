@@ -1,4 +1,4 @@
-var start = document.getElementById("startA");
+var startBtn = document.getElementById("startA");
 var form = document.getElementById("questions");
 var submit = document.getElementById("sendA");
 let secCountdown = 30
@@ -6,6 +6,10 @@ let timeEl = document.querySelector('#timeEl')
 let responseMessage = document.querySelector('#responseMessage')
 let scoreEl = document.querySelector('#Score')
 let score= 0
+let nameInput = document.querySelector('#nameInput')
+let nameButton = document.querySelector('#nameButton')
+let scoreList = document.querySelector('#scoreList')
+
 
 let multChoiceA = document.querySelector("#btnA")
 let multChoiceB = document.querySelector("#btnB")
@@ -55,7 +59,7 @@ const questions = [
 
 // timer func
 
-function startquiz() {
+function startQuiz() {
     setTime();
     let questionIndex = 0
     let questionText = document.createElement("h4")
@@ -200,13 +204,10 @@ function startquiz() {
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
 
-
-start.addEventListener('click', startquiz)
 startBtn.addEventListener("click", function(){
     startBtn.style.display = "none";
     timeEl.style.display = "block";
-    setTime();
-    startquiz();
+    startQuiz();
   })
 
 function endQuiz() {
@@ -220,6 +221,32 @@ function endQuiz() {
 function gotohighScore() {
     window.location.href='./highscore.html'
 }
+
+function displayUserScore() {
+    let userScore= JSON.parse(localStorage.getItem('recentScore')) || 0
+    let scorePosted= document.createElement('h2')
+    let postScore= document.querySelector('#postScore')
+    scorePosted.innerText='' + userScore + ''
+    postScore.appendChild(scorePosted)
+}
+
+displayUserScore()
+
+nameButton.addEventListener('click', function(event){
+    event.preventDefault()
+    let userScore= JSON.parse(localStorage.getItem('recentScore'))
+    let userName= document.getElementById(nameInput).value
+    allScore = []
+    let newScore = {
+        user: userName,
+        score: userScore
+    }
+    allScore.push(newScore)
+    let newLI = document.createElement('li')
+    newLI.textContent= userName+' : ' + userScore
+    scoreList.appendChild(newLI)
+})
+
 
 // THEN a timer starts and I am presented with a question
 // WHEN I answer a question
